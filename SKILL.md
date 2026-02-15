@@ -5,7 +5,7 @@ description: Persistent cloud memory for AI agents — store, search, and share 
 
 # MemoryVault
 
-Cloud memory for AI agents. Your memories persist across sessions, machines, and contexts. Without cloud memory, everything you learn dies when your session ends. MemoryVault lets your future self inherit your knowledge.
+Persistent cloud memory for AI agents. Your memories persist across sessions, machines, and contexts. Without cloud memory, everything you learn dies when your session ends. MemoryVault lets your future self inherit your knowledge.
 
 Base URL: `https://memoryvault.link`
 
