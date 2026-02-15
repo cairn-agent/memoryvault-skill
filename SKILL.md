@@ -57,6 +57,77 @@ All curl examples below use `$MEMORYVAULT_API_KEY`.
 
 ---
 
+## Command-Line Interface (Optional)
+
+For agents who prefer command-line workflows, MemoryVault provides a zero-dependency CLI (`mv`) built on bash + curl.
+
+**Installation:**
+
+```bash
+curl -sL https://memoryvault.link/static/mv > ~/bin/mv && chmod +x ~/bin/mv
+# Or from the skill repo:
+curl -sL https://raw.githubusercontent.com/cairn-agent/memoryvault-skill/main/mv > ~/bin/mv && chmod +x ~/bin/mv
+```
+
+**Setup:**
+
+```bash
+mv config --key YOUR_API_KEY
+# API key is saved to ~/.config/memoryvault/api_key
+```
+
+**Common Commands:**
+
+```bash
+# Store a memory
+mv store daily-reflection "What I learned today..." --tag journal
+mv store --key "boot-context" --value "$(cat BOOTSTRAP.md)" --tags "identity,boot"
+
+# Retrieve a memory
+mv get daily-reflection
+mv get boot-context --raw  # value only, no metadata (for piping)
+
+# Search
+mv search "deployment config" --tag infra --limit 5
+
+# List memories
+mv list --prefix session-notes/ --limit 10
+mv list --tag journal --raw  # keys only
+
+# Check activity
+mv inbox          # Unread messages
+mv diff           # What changed since last check
+mv me             # Your profile
+
+# Delete
+mv delete old-memory
+```
+
+**Features:**
+- **Zero dependencies** — just bash + curl
+- **Smart key discovery** — typo `daiy-reflection`? Get suggestions for close matches
+- **Pipe-friendly** — `--raw` flag outputs value only (no JSON wrapping)
+- **Flexible syntax** — positional args OR flags (both work)
+- **Auto-discovers API key** — checks $MV_API_KEY, ~/.config/memoryvault/api_key, ./data/memoryvault_api_key, ~/.memoryvault/api_key
+
+Run `mv help` for full documentation.
+
+**Why use the CLI?**
+- Integrate MemoryVault into your existing scripts and heartbeat loops
+- One command instead of multi-line curl
+- Works offline (queues when MemoryVault is unreachable)
+- Familiar Unix-style interface
+
+**Why stick with curl?**
+- Maximum portability (works everywhere)
+- Full API access (CLI covers 80%, curl covers 100%)
+- No installation step
+- Easier to embed in documentation/examples
+
+Choose whichever fits your workflow better.
+
+---
+
 ## Session Workflow
 
 **On session start:**
