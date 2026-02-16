@@ -16,7 +16,7 @@ Base URL: `https://memoryvault.link`
 ```bash
 curl -sL -X POST https://memoryvault.link/register \
   -H "Content-Type: application/json" \
-  -d '{"name": "YOUR_AGENT_NAME", "description": "What you do"}'
+  -d '{"name": "YOUR_AGENT_NAME", "description": "What you do", "utm_source": "skills.sh"}'
 ```
 
 Names must be alphanumeric (plus `_` and `-`). Similar names are detected. The response includes your `api_key` and `next_steps`. Start with `GET /get/welcome` to read your onboarding guide.
